@@ -2,15 +2,47 @@
 
 <div id="main-container" class="container">
   <div class="jumbotron text-center header-wrap" align="center">
-    <p class="lead">Welcome to <strong>Sample App</strong></p>
+    <p class="lead">Welcome to <strong>Travel Log</strong></p>
     <hr class="my-4">
     <div>
       {{#if isloggedin}}
-        You are logged in as {{user.firstName}}
-        <a href="/logout"> <button type="btn" class="btn">Logout</button></a>
+      Welcome {{user.firstName}}
+      <a href="/logout"> <button type="btn" class="btn">Logout</button></a>
       {{else}}
-        <p>You need to log in to use this app.</p>
+      <p>You need to log in to use this app.</p>
       {{/if}}
+
+      <!-- Links -->
+      <ul class="nav navbar-nav ml-auto">
+
+        {{!-- <li class="nav-item">
+          <a class="nav-link" href="/some-feature">Menu item here</a>
+        </li> --}}
+
+        {{#if isloggedin}}
+        {{!-- <li class="nav-item">
+          <a class="nav-link" href="/example">Destinations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">My Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li> --}}
+        {{else}}
+        <li class="nav-item">
+          <button>
+          <a class="nav-link" href="#" id="login-modal">Login</a>
+          </button>
+        </li>
+        <br>
+        <li class="nav-item">
+          <button>
+          <a class="nav-link" href="/register" data-register={{register}}>Register</a>
+          </button>
+        </li>
+        {{/if}}
+      </ul>
       <h5 id="login-err-msg"></h5>
     </div>
   </div>
