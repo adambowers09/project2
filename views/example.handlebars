@@ -43,14 +43,23 @@
         </ul>
       </div>
     </div>
-  </div>
+  <div id="map-display">
+            <div >
+              <div id="map" class="map is-centered block">
+ 
+              </div>
+            </div>
+          </div>
+        </div>  </div>
 </div>
-
-<script src="/assets/js/example.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWxhKf5hSELFy6GNMq-DLRPJJ2WjfON5Q&callback=initMap"></script>
 
 {{> modal/login-block}}
 
 <script>
   var userId = {{userInfo.id}};
 </script>
+
+<script src="/assets/js/example.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWxhKf5hSELFy6GNMq-DLRPJJ2WjfON5Q&callback=initMap"></script>
+
+<script src="/public/assets/js/maps.js"></script>
