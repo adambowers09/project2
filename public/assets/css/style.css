@@ -8,10 +8,6 @@ body {
   background-size: cover;
 }
 
-.hero-img {
-  height: 100%;
-}
-
 .jumbotron {
   background: rgba(0,0,0,0);
 }
@@ -21,10 +17,9 @@ body {
 }
 
 .btn {
-  color: black;
+  color:white;
   background:#cadde1;
   border: 1px solid white;
-  
 }
 
 #user-form, .header-wrap, #create-form, .create-user-wrap {
