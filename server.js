@@ -1,4 +1,5 @@
-require('dotenv').config();
+const dotenv = require('dotenv').config();
+console.log('dotenv!@!@!@!@!@!@@!@!@()())(@)(!)@(!(@(!)@()!(@)(!)@()!(@)!(@)(!)@(', dotenv);
 const express = require('express');
 const exphbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
