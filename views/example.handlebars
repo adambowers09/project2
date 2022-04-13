@@ -7,7 +7,7 @@
         <h2>{{msg}}</h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
-            <label for="example-text">City</label>
+            <label id="city-input" for="example-text">City</label>
             <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter City">
           </div>
           <div class="form-group">
@@ -32,6 +32,7 @@
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
+      
         {{!-- <h4>Trip Brought To You By {{user.firstName}}</h4> --}}
         <ul id="example-list" class="list-group">
           {{#each examples}}
@@ -40,16 +41,17 @@
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
-        </ul>
-      </div>
-    </div>
-  <div id="map-display">
+          <li>   <div id="map-display">
             <div >
-              <div id="map" class="map is-centered block">
+              <div id="map" class="map">
  
               </div>
             </div>
-          </div>
+          </div></li>
+        </ul>
+      </div>
+    </div>
+ 
         </div>  </div>
 </div>
 
@@ -59,7 +61,11 @@
   var userId = {{userInfo.id}};
 </script>
 
-<script src="/assets/js/example.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWxhKf5hSELFy6GNMq-DLRPJJ2WjfON5Q&callback=initMap"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWxhKf5hSELFy6GNMq-DLRPJJ2WjfON5Q&callback=initMap">
+</script>
 
-<script src="/public/assets/js/maps.js"></script>
+
+
+{{!-- <script src="/public/assets/js/maps.js"></script> --}}
+<script src="/assets/js/example.js"></script>

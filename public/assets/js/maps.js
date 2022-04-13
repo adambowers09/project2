@@ -8,8 +8,9 @@ var markersArray = [];
 var index = 0;
 
 var mapSubmitHandler = function (event) {
-  event.preventDefault();
-  $("#map-display").removeClass("display-none");
+  console.alert("Awoooooooo");
+
+  var zipcode = zipInput.value.trim();
   geocoder({ address: zipcode });
 };
 
@@ -59,24 +60,29 @@ function callback(results, status) {
 }
 
 var serviceDetails = function (placeDetails) {
-  //use getDetails function not sure if needed.
+  createMarker(placeDetails);
+  if (index == 4) {
+    index = 0;
+  }
 };
 
 function createMarker(place) {
-  if (markersArray.length > 5) {
+  // Checks if markers are on map already. If they are, calls function below to remove them
+  if (markersArray.length > 3) {
     setMapOnAll(null);
   }
+
   var contentString = `
-  <div style="display: flex;">
-  ${
-    place?.photos
-      ? `<img class="image is-128x128" src=${place.photos[0].getUrl()} alt=${
-          place.name
-        } />`
-      : ""
-  }
-    <div><a href=${place.website} target="_blank">${place.name}</a></div>
-  </div>`;
+    <div style="display: flex;">
+    ${
+      place?.photos
+        ? `<img class="image is-128x128" src=${place.photos[0].getUrl()} alt=${
+            place.name
+          } />`
+        : ""
+    }
+      <div><a href=${place.website} target="_blank">${place.name}</a></div>
+    </div>`;
 
   if (!place.geometry || !place.geometry.location) return;
 
@@ -100,11 +106,11 @@ function createMarker(place) {
   });
 }
 
-function nullMap(map) {
+function setMapOnAll(map) {
   for (let i = 0; i < markersArray.length; i++) {
     markersArray[i].setMap(map);
   }
   markersArray = [];
 }
 
-$("submit").on("click", mapSubmitHandler);
+$("submitBtn").on("submit", mapSubmitHandler);
