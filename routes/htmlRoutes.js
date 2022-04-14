@@ -1,4 +1,9 @@
 const router = require('express').Router();
+const multer  = require('multer')
+const upload = multer({ dest: '../data/uploads/' })
+const fs = require('fs');
+const path = require('path')
+
 
 module.exports = (db) => {
   // Load register page
@@ -86,6 +91,60 @@ module.exports = (db) => {
       res.redirect('/');
     }
   });
+
+
+  // router.post('/single', upload.single('image'), (req, res) => {
+  //   console.log(req.file);
+  //   res.send({
+  //     status: "succes",
+  //     message: "File uploaded sccessfully",
+  //     data: req.file,
+  //   });
+  // });
+
+  // router.post('/multiple', upload.array('images', 12), (req, res, next) => {
+  //   // req.files is array of `photos` files
+  //   // req.body will contain the text fields, if there were any
+  //   console.log(req.files);
+  //   res.send({
+  //     status: "succes",
+  //     message: "Files uploaded sccessfully",
+  //     data: req.files,
+  //   });
+  // });
+
+  router.get('/single', (req, res) => {
+    res.render("index")
+    // const options = {
+    //   root: path.join(__dirname, '../data/uploads')
+    });
+
+  // router.post('/uploadfile', uploadMultiple, function (req, res, next) {
+  //   if(req.files){
+  //     console.log(req.files)
+  //     console.log("files uploaded")
+  //     }
+      
+
+  //   })
+  
+  
+// res.sendFile(req.body, options, (err) => {
+//       if (err) next(err);
+//       else console.log('Sent:', fileName);
+//     });
+//   });
+//     console.log(req.file)
+//     res.file(image);
+ 
+  // router.get('/multiple', (req, res) => {
+  //   res.sender("index2")
+  // });
+
+  
+
+
+ 
 
   // Logout
   router.get('/logout', (req, res, next) => {

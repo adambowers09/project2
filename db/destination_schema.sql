@@ -4,6 +4,6 @@ CREATE TABLE destinations (
     country_state VARCHAR(30) NOT NULL,
     activities TEXT,
 	recommendations VARCHAR(30),
-    dates_travelled INTEGER NOT NULL,
-    memories VARCHAR(30)
+    dates_travelled INTEGER NOT NULL
+    -- memories VARCHAR(30)
     );
