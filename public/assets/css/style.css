@@ -73,3 +73,15 @@ hr {
 .card-body {
   color: #444;
 }
+
+/* Set the size of the div element that contains the map */
+#map { position: relative;
+  margin-left: 550px;
+  border: 5px;
+   top: 0;
+    bottom: 0; 
+    width: 600px;
+    height: 400px;
+    display: flex;
+    justify-self: center;
+ }

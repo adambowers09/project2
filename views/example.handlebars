@@ -1,3 +1,12 @@
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+{{!-- general mapbox api script --}}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'>
+</script>
+{{!-- geocoder mapbox api --}}
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+{{!-- geocoder styling --}}
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+
 {{> nav/nav-block}}
 
 <div id="home">
@@ -8,7 +17,7 @@
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label id="city-input" for="example-text">City</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter City">
+             <textarea class="form-control" id="example-text" aria-describedby="example-text" placeholder="Enter City"></textarea>
           </div>
           <div class="form-group">
             <label for="example-description">Country/State</label>
@@ -41,29 +50,39 @@
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
-          <li>   <div id="map-display">
-            <div >
-              <div id="map" class="map">
- 
-              </div>
-            </div>
-          </div></li>
+         
         </ul>
       </div>
     </div>
  
         </div>  </div>
 </div>
+<aside>
 
+<div id='map' ></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiamFtYnJvc2UwIiwiYSI6ImNsMXlkNms3NzBiamYzZHFyaTA2M3lheTAifQ.Ou_NCUw6c5u9WTU2RUP3_Q';
+const map = new mapboxgl.Map({
+container: 'map', // container ID
+style: 'mapbox://styles/mapbox/streets-v11', // style URL
+center: [-74.5, 40], // starting position [lng, lat]
+zoom: 5 // starting zoom
+
+});
+map.addControl(new MapboxGeocoder({
+  accessToken: mapboxgl.accessToken,
+  mapboxgl: mapboxgl
+}))
+</script>
+</aside>
 {{> modal/login-block}}
 
 <script>
   var userId = {{userInfo.id}};
 </script>
 
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWxhKf5hSELFy6GNMq-DLRPJJ2WjfON5Q&callback=initMap">
-</script>
+  
+
 
 
 
