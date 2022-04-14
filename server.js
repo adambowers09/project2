@@ -9,6 +9,32 @@ const helmet = require('helmet');
 const PORT = process.env.PORT || 3333;
 const app = express();
 const db = require('./models');
+const multer  = require('multer');
+const fs = require('fs');
+const path = require('path');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+  },
+});
+ 
+const upload = multer({ storage: storage });
+
+const uploadMultiple = upload.fields([{ name: 'image1', maxCount: 10 }, { name: 'image2', maxCount: 10 }]);
+console.log(uploadMultiple);
+ 
+ 
+
+
+// const upload = multer({ dest: '/public/uploads' })
+// const storage
+
+
+
 
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
@@ -21,17 +47,23 @@ if (app.get('env') !== 'test') {
 }
 
 app.use(express.static('public'));
+app.use(express.static(path.join(__dirname + '../data/uploads')));
+
 
 require('./config/passport')(db, app, passport); // pass passport for configuration
 
 // Define our routes
 app.use('/api', require('./routes/apiRoutes')(passport, db));
 app.use(require('./routes/htmlRoutes')(db));
+// app.use(require('./routes/commonRoutes')(db));
+// app.use(require('./routes/indexRoutes')(db));
+
 
 // Secure express app
 app.use(helmet.hsts({
   maxAge: moment.duration(1, 'years').asMilliseconds()
 }));
+
 
 // catch 404 and forward to error handler
 if (app.get('env') !== 'development') {
