@@ -25,6 +25,11 @@ Created a full-stack web app that allows users to log the destinations they have
 
 
 
+## Installation
+
+Run "npm i" from root directory.  Run "npm start" to start the webserver.
+
+
 ## Screenshot
 
 
